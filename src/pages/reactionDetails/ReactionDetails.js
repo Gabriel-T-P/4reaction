@@ -3,12 +3,12 @@ import { useDocument } from '../../hooks/useDocument'
 
 // Styles
 import './Project.css'
-import ProjectComments from './ProjectComments'
+//import ProjectComments from './ProjectComments'
 import ProjectSummary from './ProjectSummary'
 
 export default function Project() {
   const { id } = useParams()
-  const { error, document } = useDocument('projects', id)
+  const { error, document } = useDocument('reactions', id)
 
   if (error) {
     return (<div className="error"> {error} </div>)
@@ -21,8 +21,8 @@ export default function Project() {
   return (
 
     <div className='project-details'>
-      <ProjectSummary project={document} />
-      <ProjectComments project={document} />
+      <ProjectSummary reaction={document} />
+      {/* <ProjectComments reaction={document} /> */}
     </div>
   )
 }

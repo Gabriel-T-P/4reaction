@@ -12,12 +12,6 @@
   border-radius: 4px;
 }
 
-.project-summary .due-date {
-  margin: 10px 0;
-  font-size: 0.9em;
-  color: var(--title-color);
-}
-
 .project-summary .details {
   margin: 30px 0;
   color: var(--text-color);
@@ -30,9 +24,13 @@
   font-size: 0.9em;
 }
 
+.project-summary p {
+  margin-bottom: 10px;
+}
+
 .project-summary .assigned-users {
   display: flex;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .project-summary .assigned-users .avatar {
@@ -77,12 +75,6 @@
   width: 30px;
   height: 30px;
   margin-right: 10px;
-}
-
-.comment-date {
-  color: var(--text-color);
-  font-size: 0.9em;
-  margin: 4px 0 10px;
 }
 
 .comment-content {

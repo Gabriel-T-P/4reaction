@@ -14,7 +14,7 @@ import Create from './pages/create/Create'
 import Dashboard from './pages/dashboard/Dashboard'
 import Login from './pages/login/Login'
 import Signup from './pages/signup/Signup'
-import Project from './pages/project/Project'
+import ReactionDetails from './pages/reactionDetails/ReactionDetails'
 import Profile from './pages/profile/Profile'
 import Reactions from './pages/reactions/Reaction'
 
@@ -32,7 +32,7 @@ function App() {
             <Routes>
               <Route path='/' element={user ? <Dashboard /> : <Navigate to='/login' />} />
               <Route path='/create' element={user ? <Create /> : <Navigate to='/login' />} />
-              <Route path='/projects/:id' element={user ? <Project /> : <Navigate to='/login' />} />
+              <Route path='/reactionDetails/:id' element={user ? <ReactionDetails /> : <Navigate to='/login' />} />
               <Route path='/profile/:id' element={user ? <Profile /> : <Navigate to='/login' />} />
               <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
               <Route path='/signup' element={!user ? <Signup /> : <Navigate to='/' />} />

@@ -15,6 +15,7 @@
 }
 
 .project-list h4 {
+  text-align: center;
   font-size: 0.9em;
   color: var(--heading-color);
 }
@@ -36,10 +37,14 @@
 }
 
 .project-list li {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   margin-right: 10px;
 }
 
 .project-list .avatar {
+  margin-right: 10px;
   width: 30px;
   height: 30px;
 }

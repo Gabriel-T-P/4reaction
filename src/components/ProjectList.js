@@ -4,22 +4,20 @@ import Avatar from './Avatar'
 // Styles
 import './ProjectList.css'
 
-export default function ProjectList({ projects }) {
+export default function ProjectList({ documents }) {
 
   return (
     <div className='project-list'>
-      {projects.lenght === 0 && <p>Por enquanto sem projetos</p>}
-      {projects.map((project) => (
-        <Link to={`/projects/${project.id}`} key={project.id}>
-          <h4>{project.name}</h4>
-          <p>Previsto para {project.dueDate.toDate().toDateString()} </p>
+      {documents.lenght === 0 && <p>Por enquanto sem reações.</p>}
+      {documents.map((reaction) => (
+        <Link to={`/reactionDetails/${reaction.id}`} key={reaction.id}>
+          <h4>{reaction.name}</h4>
           <div className="assigned-to">
             <ul>
-              {project.assignedUsersList.map((user) => (
-                <li key={user.photoURL}>
-                  <Avatar src={user.photoURL} />
-                </li>
-              ))}
+              <li>
+                <Avatar src={reaction.createdBy.photoURL} />
+                <p>{reaction.createdBy.displayName}</p>
+              </li>
             </ul>
           </div>
         </Link>
