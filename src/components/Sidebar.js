@@ -7,6 +7,7 @@ import './Sidebar.css'
 import AddIcon from '../assets/add_icon.svg'
 import DashboardIcon from '../assets/dashboard_icon.svg'
 import LikeIcon from '../assets/like.png'
+import InboxIcon from '../assets/inbox.png'
 
 export default function Sidebar() {
   const { user } = useAuthContext()
@@ -30,8 +31,15 @@ export default function Sidebar() {
 
             <li>
               <NavLink to='/reactions'>
-                <img src={LikeIcon} alt="ícone de minhas reações" />
-                <span>Minhas Reações</span>
+                <img src={LikeIcon} alt="ícone das minhas reações" />
+                <span>Reações Recebidas</span>
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink to='/receivedReactions'>
+                <img src={InboxIcon} alt="ícone das minhas reações enviadas" />
+                <span>Reações Enviadas</span>
               </NavLink>
             </li>
 

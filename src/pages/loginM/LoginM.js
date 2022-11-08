@@ -1,31 +1,39 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { useLogin } from '../../hooks/useLogin'
+import { useCollection } from '../../hooks/useCollection'
 
 // Styles
-import './Login.css'
+import './LoginM.css'
 
-export default function Login() {
-  const [email, setEmail] = useState('')
+export default function LoginM() {
+  const [registration, setRegistration] = useState('')
   const [password, setPassword] = useState('')
   const { login, isPending, error } = useLogin()
+  const { documents } = useCollection('users')
+
+  console.log('s')
+
+  const email = documents && documents.forEach(user => {
+    if (user.registration === registration) {
+    }
+  })
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    login(email, password)
+    //login(email, password)
   }
 
   return (
 
     <form className="auth-form" onSubmit={handleSubmit}>
-      <h2>Entrar</h2>
+      <h2>Entrar com matrícula</h2>
 
       <label>
-        <span>email:</span>
+        <span>matrícula:</span>
         <input
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
+          type="text"
+          onChange={(e) => setRegistration(e.target.value)}
+          value={registration}
           required
         />
       </label>
@@ -42,9 +50,6 @@ export default function Login() {
 
       {!isPending && <button className="btn">Entrar</button>}
       {isPending && <button className="btn" disabled>Carregando...</button>}
-      <Link to='/loginM'>
-        <button className="btn"> Entrar com matrícula </button>
-      </Link>
       {error && <div className="error"> {error} </div>}
 
     </form>

@@ -15,7 +15,7 @@ export const useDocument = (collection, id) => {
         setError(null)
       }
       else {
-        setError('Este projeto não existe')
+        setError('Esta informação não existe')
       }
     }, (err) => {
       console.log(err.message)

@@ -15,8 +15,14 @@ export default function ProjectList({ documents }) {
           <div className="assigned-to">
             <ul>
               <li>
+                <p>De: </p>
                 <Avatar src={reaction.createdBy.photoURL} />
                 <p>{reaction.createdBy.displayName}</p>
+              </li>
+              <li>
+                <p>Para: </p>
+                <Avatar src={reaction.assignedUserList.photoURL} />
+                <p>{reaction.assignedUserList.displayName}</p>
               </li>
             </ul>
           </div>

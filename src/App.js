@@ -13,10 +13,11 @@ import FriendsBar from './components/FriendsBar'
 import Create from './pages/create/Create'
 import Dashboard from './pages/dashboard/Dashboard'
 import Login from './pages/login/Login'
+import LoginM from './pages/loginM/LoginM'
 import Signup from './pages/signup/Signup'
 import ReactionDetails from './pages/reactionDetails/ReactionDetails'
-import Profile from './pages/profile/Profile'
 import Reactions from './pages/reactions/Reaction'
+import ReceivedReactions from './pages/receivedReactions/ReceivedReactions'
 
 function App() {
   const { user, authIsReady } = useAuthContext()
@@ -33,10 +34,11 @@ function App() {
               <Route path='/' element={user ? <Dashboard /> : <Navigate to='/login' />} />
               <Route path='/create' element={user ? <Create /> : <Navigate to='/login' />} />
               <Route path='/reactionDetails/:id' element={user ? <ReactionDetails /> : <Navigate to='/login' />} />
-              <Route path='/profile/:id' element={user ? <Profile /> : <Navigate to='/login' />} />
               <Route path='/login' element={!user ? <Login /> : <Navigate to='/' />} />
+              <Route path='/loginM' element={!user ? <LoginM /> : <Navigate to='/' />} />
               <Route path='/signup' element={!user ? <Signup /> : <Navigate to='/' />} />
               <Route path='/reactions' element={user ? <Reactions /> : <Navigate to='/login' />} />
+              <Route path='/receivedReactions' element={user ? <ReceivedReactions /> : <Navigate to='/login' />} />
             </Routes>
           </div>
           {user && <FriendsBar />}

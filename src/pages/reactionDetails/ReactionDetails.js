@@ -3,7 +3,7 @@ import { useDocument } from '../../hooks/useDocument'
 
 // Styles
 import './Project.css'
-//import ProjectComments from './ProjectComments'
+import ProjectComments from './ProjectComments'
 import ProjectSummary from './ProjectSummary'
 
 export default function Project() {
@@ -22,7 +22,7 @@ export default function Project() {
 
     <div className='project-details'>
       <ProjectSummary reaction={document} />
-      {/* <ProjectComments reaction={document} /> */}
+      <ProjectComments reaction={document} />
     </div>
   )
 }

@@ -5,8 +5,8 @@ import { useFirestore } from '../../hooks/useFirestore'
 // Component
 import Avatar from "../../components/Avatar"
 
-export default function ProjectComments({ project }) {
-  const { updateDocument, response } = useFirestore('projects')
+export default function ProjectComments({ reaction }) {
+  const { updateDocument, response } = useFirestore('reactions')
   const [newComment, setNewComment] = useState('')
   const { user } = useAuthContext()
 
@@ -20,8 +20,8 @@ export default function ProjectComments({ project }) {
       id: Math.random()
     }
 
-    await updateDocument(project.id, {
-      comments: [...project.comments, commentToAdd]
+    await updateDocument(reaction.id, {
+      comments: [...reaction.comments, commentToAdd]
     })
 
     if (!response.error) {
@@ -32,10 +32,10 @@ export default function ProjectComments({ project }) {
   return (
 
     <div className="project-comments" onSubmit={handleSubmit}>
-      <h4>Comentários:</h4>
+      <h4>Comentários da reação</h4>
 
       <ul>
-        {!project.comments.lenght > 0 && project.comments.map((comment) => (
+        {!reaction.comments.lenght > 0 && reaction.comments.map((comment) => (
           <li key={comment.id}>
 
             <div className="comment-author">
@@ -60,7 +60,7 @@ export default function ProjectComments({ project }) {
           ></textarea>
         </label>
 
-        <button className="btn">Adicionar comentário</button>
+        <button className="btn">Adicionar</button>
       </form>
     </div>
   )

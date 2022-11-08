@@ -6,9 +6,9 @@ import { useAuthContext } from '../../hooks/useAuthContext'
 import ProjectList from '../../components/ProjectList'
 
 // Styles
-import './Reactions.css'
+import './ReceivedReactions.css'
 
-export default function Reactions() {
+export default function ReceivedReactions() {
   const { documents, error } = useCollection('reactions')
   const [currentFilter, setCurrentFilter] = useState('meus')
   const { user } = useAuthContext()
@@ -20,11 +20,11 @@ export default function Reactions() {
         return true
 
       case 'meus':
-        let assignedToMe = false
-        if (document.assignedUserList.id === user.uid) {
-          assignedToMe = true
+        let sentByMe = false
+        if (document.createdBy.id === user.uid) {
+          sentByMe = true
         }
-        return assignedToMe
+        return sentByMe
 
       case 'design':
       case 'desenvolvimento':
@@ -39,7 +39,7 @@ export default function Reactions() {
 
   return (
     <div>
-      <h2 className="page-title">Reações recebidas</h2>
+      <h2 className="page-title">Reações enviadas</h2>
       {error && <p className="error">{error}</p>}
       {reactions && <ProjectList documents={reactions} />}
     </div>

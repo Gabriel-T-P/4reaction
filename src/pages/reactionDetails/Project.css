@@ -80,4 +80,6 @@
 .comment-content {
   color: var(--text-color);
   font-size: 0.9em;
+  margin-top: 10px;
+  margin-left: 20px;
 }

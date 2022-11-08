@@ -1,10 +1,9 @@
-const filterList = ['todos', 'meus', 'design', 'desenvolvimento', 'marketing', 'vendas']
+const filterList = ['todos', 'financeiro', 'logistica', 'suprimentos', 'materiais', 'carga']
 
 export default function ProjectFilter({ currentFilter, changeFilter }) {
 
   const handleClick = (newFilter) => {
     changeFilter(newFilter)
-    console.log(currentFilter)
   }
 
   return (

@@ -32,3 +32,55 @@
 .project-filter button.active {
   color: var(--primary-color);
 }
+
+/* Listagem */
+
+.users-list {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 20px;
+}
+
+.users-list a {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 6px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  color: inherit;
+}
+
+.users-list p {
+  color: var(--text-color);
+  font-size: 1.0em;
+}
+
+.users-list span {
+  margin-left: 8px;
+}
+
+.users-list .assigned-to {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.users-list ul {
+  margin: 10px 0;
+  display: flex;
+}
+
+.users-list li {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.users-list .avatar {
+  margin-right: 10px;
+  width: 35px;
+  height: 35px;
+}

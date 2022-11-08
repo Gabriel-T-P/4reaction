@@ -30,6 +30,8 @@ export const useSignup = () => {
 
       // create user document
       const registration = res.user.uid
+      const counter = 0
+
       projectFirestore.collection('users').doc(res.user.uid).set({
         online: true,
         displayName,
@@ -37,6 +39,7 @@ export const useSignup = () => {
         department,
         office,
         registration,
+        counter,
         photoURL: imgUrl
       })
 

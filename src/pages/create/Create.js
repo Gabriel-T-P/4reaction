@@ -4,6 +4,7 @@ import Select from 'react-select'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useCollection } from '../../hooks/useCollection'
 import { useFirestore } from '../../hooks/useFirestore'
+import { projectFirestore } from '../../firebase/config'
 
 // Styles
 import './Create.css'
@@ -64,19 +65,26 @@ export default function Create() {
       id: assignedUser.value.id
     }
 
-    console.log(assignedUserList)
-
     const reaction = {
       name,
       details,
-      category: category.value,
+      category,
       comments: [],
       createdBy,
       assignedUserList
     }
 
+    const addCounter = async (id) => {
+      const ref = projectFirestore.collection('users')
+      const updateCounter = await ref.doc(id).update({
+        counter: assignedUser.value.counter + 1
+      })
+      return updateCounter
+    }
+
     setFormError(null)
     await addDocument(reaction)
+    await addCounter(assignedUser.value.id)
     if (!response.error) {
       navigate('/')
     }

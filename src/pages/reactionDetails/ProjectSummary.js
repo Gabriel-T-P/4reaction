@@ -1,20 +1,37 @@
-import Avatar from '../../components/Avatar'
 import { useFirestore } from '../../hooks/useFirestore'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import { useNavigate } from 'react-router-dom'
+import { useDocument } from '../../hooks/useDocument'
+import { useState } from 'react'
+
+//Components
+import Avatar from '../../components/Avatar'
 
 export default function ProjectSummary({ reaction }) {
-  const { deleteDocument } = useFirestore('projects')
+  const { deleteDocument } = useFirestore('reactions')
+  const { updateDocument } = useFirestore('users')
+  const { error, document } = useDocument('users', reaction.assignedUserList.id)
+  const [isPending, setIsPending] = useState(false)
   const { user } = useAuthContext()
   const navigate = useNavigate()
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     if (user.uid === reaction.createdBy.id) {
+      setIsPending(true)
+
+      //subtrair o contador de reação
+      await updateDocument(reaction.assignedUserList.id, {
+        counter: document.counter - 1
+      })
+
       deleteDocument(reaction.id)
+
+      setIsPending(false)
       navigate('/')
 
     }
     else {
+      setIsPending(false)
       alert('Somente quem criou a reação pode deletar.')
     }
 
@@ -25,7 +42,7 @@ export default function ProjectSummary({ reaction }) {
     <div>
       <div className="project-summary">
         <h2 className="page-title"> {reaction.name} </h2>
-        <p>Categoria: {reaction.category}</p>
+        <p>Categoria: {reaction.category.label}</p>
         <p className="details">
           {reaction.details}
         </p>
@@ -35,7 +52,8 @@ export default function ProjectSummary({ reaction }) {
           <p> {reaction.createdBy.displayName} </p>
         </div>
       </div>
-      <button className="btn" onClick={handleClick}>Excluir reação</button>
+      {!isPending && <button className="btn" onClick={handleClick}>Excluir reação</button>}
+      {isPending && <button className="btn" disabled>Carregando...</button>}
     </div>
   )
 }
