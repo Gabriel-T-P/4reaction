@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import { useLogin } from '../../hooks/useLogin'
 
 // Styles
@@ -42,9 +42,9 @@ export default function Login() {
 
       {!isPending && <button className="btn">Entrar</button>}
       {isPending && <button className="btn" disabled>Carregando...</button>}
-      <Link to='/loginM'>
+      {/* <Link to='/loginM'>
         <button className="btn"> Entrar com matrícula </button>
-      </Link>
+      </Link> */}
       {error && <div className="error"> {error} </div>}
 
     </form>
